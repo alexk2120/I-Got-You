@@ -1,7 +1,7 @@
 import React from "react";
 import GratitudeWall from "./GratitudeWall";
 import { Routes, Route } from "react-router-dom";
-import DCHelpWall from "./DCHelpWall";
+import NYCHelpWall from "./NYCHelpWall";
 import { useEffect, useState } from "react";
 import HelpForm from "./HelpForm";
 import GratForm from "./GratForm";
@@ -13,22 +13,22 @@ export default function MainContent() {
   const [gratData, setGratData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:9292/users")
+    fetch("/users")
       .then((res) => res.json())
       .then(setUsers);
 
-    fetch("http://localhost:9292/help")
+    fetch("http://localhost:3000/help")
       .then((res) => res.json())
       .then(setHelp);
 
-    fetch("http://localhost:9292/gratitude")
+    fetch("http://localhost:3000/gratitude")
       .then((res) => res.json())
       .then(setGratData);
   }, []);
 
   //Creates a User/Help Request/Grat
   const postUser = (user) => {
-    fetch("http://localhost:9292/users", {
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function MainContent() {
   };
 
   const postHelp = (helpD) => {
-    fetch("http://localhost:9292/help", {
+    fetch("http://localhost:3000/help", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export default function MainContent() {
   };
 
   const postGrat = (gratD) => {
-    fetch("http://localhost:9292/gratitude", {
+    fetch("http://localhost:3000/gratitude", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function MainContent() {
   // patch likes
 
   const patchGrat = (gratD) => {
-    fetch(`http://localhost:9292/gratitude/${gratD.id}`, {
+    fetch(`http://localhost:3000/gratitude/${gratD.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ export default function MainContent() {
             />
           }
         />
-        <Route path="/DC" element={<DCHelpWall users={users} />} />
+        <Route path="/NYC" element={<NYCHelpWall users={users} />} />
         <Route
           path="/help-form"
           element={<HelpForm postUser={postUser} postHelp={postHelp} />}

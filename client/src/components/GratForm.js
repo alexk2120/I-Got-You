@@ -78,7 +78,7 @@ export default function GratForm({ postUser, postGrat }) {
               value={formData.city}
             >
               <option>Choose...</option>
-              <option>District of Columbia</option>
+              <option>New York City</option>
               <option>Laguna Beach</option>
               <option>Miami</option>
             </Form.Select>
@@ -87,7 +87,7 @@ export default function GratForm({ postUser, postGrat }) {
             <Form.Label>Profile Image URL</Form.Label>
             <Form.Control
               type="url"
-              placeholder="https://www.backendgivesmeanxiety.jpg"
+              placeholder="upload image"
               onChange={handleChange}
               value={formData.profile_url}
               name="profile_url"

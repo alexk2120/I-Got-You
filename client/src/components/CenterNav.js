@@ -10,7 +10,7 @@ export default function CenterNav() {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="Help-Wall" href="/DC" className="center-nav-link">
+        <Nav.Link eventKey="Help-Wall" href="/NYC" className="center-nav-link">
           Help Wall
         </Nav.Link>
       </Nav.Item>

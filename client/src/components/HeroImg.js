@@ -19,7 +19,7 @@ export default function HeroImg() {
               onChange={(e) => handleChange(e.target.value)}
             >
               <option value="">Choose a City</option>
-              <option value="DC">District of Columbia - Washington</option>
+              <option value="NYC">New York City - New York</option>
               <option value="">Miami - Florida</option>
               <option value="3">Laguna Beach - California</option>
             </select>

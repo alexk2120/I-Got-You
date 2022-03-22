@@ -102,7 +102,7 @@ export default function HelpForm({ postUser, postHelp }) {
               value={formData.city}
             >
               <option>Choose...</option>
-              <option>District of Columbia</option>
+              <option>New York City</option>
               <option>Laguna Beach</option>
               <option>Miami</option>
             </Form.Select>
@@ -111,7 +111,7 @@ export default function HelpForm({ postUser, postHelp }) {
             <Form.Label>Image URL</Form.Label>
             <Form.Control
               type="url"
-              placeholder="https://www.backendgivesmeanxiety.jpg"
+              placeholder="upload img option"
               onChange={handleChange}
               value={formData.profile_url}
               name="profile_url"
@@ -133,7 +133,7 @@ export default function HelpForm({ postUser, postHelp }) {
           <Form.Control
             as="textarea"
             rows={3}
-            placeholder="Help with food for tonight"
+            placeholder='i.e."Help with food for tonight"'
             onChange={handleChangeHelp}
             value={formDataHelp.h_request}
             name="h_request"
