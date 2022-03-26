@@ -78,7 +78,7 @@ export default function GratForm({ postUser, postGrat }) {
               value={formData.city}
             >
               <option>Choose...</option>
-              <option>New York City</option>
+              <option>D.C.</option>
               <option>Laguna Beach</option>
               <option>Miami</option>
             </Form.Select>

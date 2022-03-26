@@ -1,7 +1,7 @@
 import React from "react";
 import GratitudeWall from "./GratitudeWall";
 import { Routes, Route } from "react-router-dom";
-import NYCHelpWall from "./NYCHelpWall";
+import HelpWall from "./DcHelpWall";
 import { useEffect, useState } from "react";
 import HelpForm from "./HelpForm";
 import GratForm from "./GratForm";
@@ -106,7 +106,7 @@ export default function MainContent() {
             />
           }
         />
-        <Route path="/NYC" element={<NYCHelpWall users={users} />} />
+        <Route path="/DC" element={<HelpWall users={users} />} />
         <Route
           path="/help-form"
           element={<HelpForm postUser={postUser} postHelp={postHelp} />}
