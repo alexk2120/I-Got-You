@@ -39,7 +39,10 @@ profile_url = [
 
 10.times {Gpost.create({comment:Faker::Lorem.paragraph(sentence_count: 2), likes:Faker::Number.number(digits: 3), user_id:User.all.sample.id})}
 
-13.times {Hpost.create({title:Faker::Lorem.sentence(word_count: 2), h_request:Faker::Lorem.paragraph(sentence_count: 2),user_id:User.all.sample.id})}
+13.times {Hpost.create({
+  title:Faker::Lorem.sentence(word_count: 4), 
+  h_request:Faker::Lorem.paragraph(sentence_count: 3),
+  user_id:User.all.sample.id})}
 
 
 puts '✅ Done seeding!'

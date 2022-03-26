@@ -8,94 +8,96 @@ import GratForm from "./GratForm";
 
 export default function MainContent() {
   const [users, setUsers] = useState([]);
-  const [help, setHelp] = useState([]);
-  const [grat, setGrat] = useState([]);
-  const [gratData, setGratData] = useState([]);
+   const [help, setHelp] = useState([]);
+   const [grat, setGrat] = useState([]);
+   const [gratData, setGratData] = useState([]);
 
   useEffect(() => {
     fetch("/users")
       .then((res) => res.json())
-      .then(setUsers);
+      .then((data) => console.log(data)
+      .then( setUsers) 
+      )
+  fetch("http://localhost:3000/hposts")
+          .then((res) => res.json())
+          .then(setHelp)
+          
+            fetch("http://localhost:3000/gposts")
+             .then((r) => r.json())
+              .then(setGratData);
+        }, []);
+   
 
-    fetch("http://localhost:3000/help")
-      .then((res) => res.json())
-      .then(setHelp);
+  // //Creates a User/Help Request/Grat
+  // const postUser = (user) => {
+  //   fetch("http://localhost:3000/users", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((newUser) => {
+  //       setUsers([newUser, ...users]);
+  //     });
+  // };
 
-    fetch("http://localhost:3000/gratitude")
-      .then((res) => res.json())
-      .then(setGratData);
-  }, []);
+  // const postHelp = (helpD) => {
+  //   fetch("http://localhost:3000/hpost", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(helpD),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((newhelp) => {
+  //       setHelp([newhelp, ...help]);
+  //     });
+  // };
 
-  //Creates a User/Help Request/Grat
-  const postUser = (user) => {
-    fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((newUser) => {
-        setUsers([newUser, ...users]);
-      });
-  };
-
-  const postHelp = (helpD) => {
-    fetch("http://localhost:3000/help", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(helpD),
-    })
-      .then((res) => res.json())
-      .then((newhelp) => {
-        setHelp([newhelp, ...help]);
-      });
-  };
-
-  const postGrat = (gratD) => {
-    fetch("http://localhost:3000/gratitude", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(gratD),
-    })
-      .then((res) => res.json())
-      .then((newgrat) => {
-        setGrat([newgrat, ...grat]);
-      });
-  };
+  // const postGrat = (gratD) => {
+  //   fetch("http://localhost:3000/gpost", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(gratD),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((newgrat) => {
+  //       setGrat([newgrat, ...grat]);
+  //     });
+  // };
 
   // patch likes
 
-  const patchGrat = (gratD) => {
-    fetch(`http://localhost:3000/gratitude/${gratD.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...gratD, likes: gratD.likes }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setGrat(
-          gratD.map((p) => {
-            if (gratD.id === data.id) {
-              return data;
-            } else {
-              return p;
-            }
-          })
-        );
-      });
-  };
-  return (
+  // const patchGrat = (gratD) => {
+  //   fetch(`http://localhost:3000/gpost/${gratD.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ ...gratD, likes: gratD.likes }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setGrat(
+  //         gratD.map((p) => {
+  //           if (gratD.id === data.id) {
+  //             return data;
+  //           } else {
+  //             return p;
+  //           }
+  //         })
+  //       );
+  //     });
+  // };
+    return (
     <div>
-      <Routes>
+      <Routes> 
         <Route
           path="/"
           element={
@@ -105,8 +107,8 @@ export default function MainContent() {
               patchGrat={patchGrat}
             />
           }
-        />
-        <Route path="/DC" element={<HelpWall users={users} />} />
+        /> 
+         <Route path="/DC" element={<HelpWall users={users} />} />
         <Route
           path="/help-form"
           element={<HelpForm postUser={postUser} postHelp={postHelp} />}
