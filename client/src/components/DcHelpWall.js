@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HelpCard from "./HelpCard";
 
-export default function HelpWall({ users }) {
+export default function DcHelpWall({ users }) {
   return (
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">

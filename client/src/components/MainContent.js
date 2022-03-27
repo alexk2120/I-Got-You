@@ -1,7 +1,7 @@
 import React from "react";
 import GratitudeWall from "./GratitudeWall";
 import { Routes, Route } from "react-router-dom";
-import HelpWall from "./DcHelpWall";
+import DcHelpWall from "./DcHelpWall";
 import { useEffect, useState } from "react";
 import HelpForm from "./HelpForm";
 import GratForm from "./GratForm";
@@ -14,87 +14,86 @@ export default function MainContent() {
 
   useEffect(() => {
     fetch("/users")
-      .then((res) => res.json())
-      .then((data) => console.log(data)
-      .then( setUsers) 
-      )
-  fetch("http://localhost:3000/hposts")
-          .then((res) => res.json())
-          .then(setHelp)
+   .then((res) => res.json())
+   .then(setUsers) 
+      
+  fetch("/hposts")
+  .then((res) => res.json())
+  .then(setHelp)
           
-            fetch("http://localhost:3000/gposts")
+            fetch("/gposts")
              .then((r) => r.json())
               .then(setGratData);
         }, []);
    
 
-  // //Creates a User/Help Request/Grat
-  // const postUser = (user) => {
-  //   fetch("http://localhost:3000/users", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((newUser) => {
-  //       setUsers([newUser, ...users]);
-  //     });
-  // };
+  // Creates a User Help Request/Grat
+  const postUser = (user) => {
+    fetch("/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((newUser) => {
+        setUsers([newUser, ...users]);
+      });
+  };
 
-  // const postHelp = (helpD) => {
-  //   fetch("http://localhost:3000/hpost", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(helpD),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((newhelp) => {
-  //       setHelp([newhelp, ...help]);
-  //     });
-  // };
+  const postHelp = (helpD) => {
+    fetch("/hpost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(helpD),
+    })
+      .then((res) => res.json())
+      .then((newhelp) => {
+        setHelp([newhelp, ...help]);
+      });
+  };
 
-  // const postGrat = (gratD) => {
-  //   fetch("http://localhost:3000/gpost", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(gratD),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((newgrat) => {
-  //       setGrat([newgrat, ...grat]);
-  //     });
-  // };
+  const postGrat = (gratD) => {
+    fetch("/gpost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gratD),
+    })
+      .then((res) => res.json())
+      .then((newgrat) => {
+        setGrat([newgrat, ...grat]);
+      });
+  };
 
-  // patch likes
+  //  /patch likes
 
-  // const patchGrat = (gratD) => {
-  //   fetch(`http://localhost:3000/gpost/${gratD.id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ ...gratD, likes: gratD.likes }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setGrat(
-  //         gratD.map((p) => {
-  //           if (gratD.id === data.id) {
-  //             return data;
-  //           } else {
-  //             return p;
-  //           }
-  //         })
-  //       );
-  //     });
-  // };
+  const patchGrat = (gratD) => {
+    fetch(`/gpost/${gratD.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...gratD, likes: gratD.likes }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setGrat(
+          gratD.map((p) => {
+            if (gratD.id === data.id) {
+              return data;
+            } else {
+              return p;
+            }
+          })
+        );
+      });
+  };
     return (
     <div>
       <Routes> 
@@ -108,7 +107,7 @@ export default function MainContent() {
             />
           }
         /> 
-         <Route path="/DC" element={<HelpWall users={users} />} />
+         <Route path="/DC" element={<DcHelpWall users={users} />} />
         <Route
           path="/help-form"
           element={<HelpForm postUser={postUser} postHelp={postHelp} />}
