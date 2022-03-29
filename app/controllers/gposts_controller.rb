@@ -46,6 +46,6 @@ class GpostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gpost_params
-      params.require(:gpost).permit(:comment, :likes, :user_id)
+      params.permit(:comment, :likes, :user_id)
     end
 end

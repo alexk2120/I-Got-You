@@ -14,18 +14,21 @@ export default function MainContent() {
 
   useEffect(() => {
     fetch("/users")
-   .then((res) => res.json())
-   .then(setUsers) 
+   .then((r) => r.json())
+   .then((users) =>  setUsers(users)); 
       
-  fetch("/hposts")
-  .then((res) => res.json())
-  .then(setHelp)
-          
-            fetch("/gposts")
-             .then((r) => r.json())
-              .then(setGratData);
-        }, []);
+  // fetch("/hposts")
+  // .then((r) => r.json())
+  // .then((help) => console.log('hposts',help),  setHelp(help));
+
+
+  // fetch("/gposts")
+  //  .then((r) => r.json())
+  // .then((gratData) => console.log("gratposts", gratData) , setGratData(gratData)
    
+  }, []);
+   
+      
 
   // Creates a User Help Request/Grat
   const postUser = (user) => {
@@ -43,7 +46,7 @@ export default function MainContent() {
   };
 
   const postHelp = (helpD) => {
-    fetch("/hpost", {
+    fetch("/hposts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +60,7 @@ export default function MainContent() {
   };
 
   const postGrat = (gratD) => {
-    fetch("/gpost", {
+    fetch("/gposts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,15 +68,15 @@ export default function MainContent() {
       body: JSON.stringify(gratD),
     })
       .then((res) => res.json())
-      .then((newgrat) => {
-        setGrat([newgrat, ...grat]);
+      .then((newGrat) => {
+        setGrat([newGrat, ...grat]);
       });
   };
 
   //  /patch likes
 
   const patchGrat = (gratD) => {
-    fetch(`/gpost/${gratD.id}`, {
+    fetch(`/gposts/${gratD.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -18,6 +18,7 @@ export default function HelpCard({
 
   return (
     <div className="container">
+      
       <div className="col">
         <div className="card h-100">
           <img
@@ -26,8 +27,8 @@ export default function HelpCard({
             alt="..."
           />
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
-            <p className="card-text">{request}</p>
+            <h5 className="card-title">{name}</h5>
+            <p className="card-text">{name}</p>
             <Button className="got-you-btn" onClick={handleShow}>
               I Got You
             </Button>

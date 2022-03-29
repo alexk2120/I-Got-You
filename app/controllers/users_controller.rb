@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[ show update destroy ]
-
+# attributes :id, :first_name, :last_name, :email, :phone, :city, :profile_url, hposts: [:id, :comment, :likes, :user_id]
 def index
     @users = User.all
     render json: @users 

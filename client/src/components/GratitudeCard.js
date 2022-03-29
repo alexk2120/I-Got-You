@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import profileImg from "./../img/default_img.png";
 import { Container } from "react-bootstrap";
 import { HeartFill, Heart } from "react-bootstrap-icons";
@@ -12,7 +12,7 @@ export default function GratitudeCard({
   gid,
 }) {
   const [newLike, setNewLike] = useState(parseInt(likes));
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     id: gid,
     likes: parseInt(likes) + 1,
   });
