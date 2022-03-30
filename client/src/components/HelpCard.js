@@ -28,7 +28,7 @@ export default function HelpCard({
           />
           <div className="card-body">
             <h5 className="card-title">{name}</h5>
-            <p className="card-text">{name}</p>
+            <p className="card-text">{request}</p>
             <Button className="got-you-btn" onClick={handleShow}>
               I Got You
             </Button>

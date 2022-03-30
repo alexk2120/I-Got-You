@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_26_150536) do
 
   create_table "hposts", force: :cascade do |t|
     t.string "title"
-    t.string "h_request"
-    t.bigint "user_id"
+    t.text "h_request"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hposts_on_user_id"
@@ -44,4 +44,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_26_150536) do
   end
 
   add_foreign_key "gposts", "users"
+  add_foreign_key "hposts", "users"
 end

@@ -18,9 +18,6 @@
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.2"
   },
-      "engines": {
-        "node": "16.13.2"
-      },
   "scripts": {
     "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",

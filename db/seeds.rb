@@ -13,7 +13,7 @@ profile_url = [
    'https://compote.slate.com/images/22ee6111-e168-4a10-bdbd-b0f732d4552c.jpg',
    'https://miro.medium.com/max/1140/1*6hy3AXS5V06rwG0OEl891Q.jpeg',
    'https://media.istockphoto.com/photos/woman-comforts-daughter-at-clothing-drive-picture-id514225940?k=20&m=514225940&s=612x612&w=0&h=BLkdhavqtpcC7S7rnbHxiRv0yIp000dlFYzrDyOzibk=',
-   'https://family.jrank.org/article_images/ep201102/family/family1314.jpg',
+  #  'https://family.jrank.org/article_images/ep201102/family/family1314.jpg',
    'https://www.thesun.co.uk/wp-content/uploads/2018/04/nintchdbpict000401741180.jpg',
    'https://cdn.talkpoverty.org/content/uploads/2019/11/26102530/GettyImages-1180048076-937x625.jpg'
 
@@ -24,7 +24,7 @@ profile_url = [
 
 # Seed your database here
 
-15.times {
+25.times {
   User.create(
     {
       first_name: Faker::Name.unique.first_name,
@@ -39,9 +39,9 @@ profile_url = [
 
 10.times {Gpost.create({comment:Faker::Lorem.paragraph(sentence_count: 2), likes:Faker::Number.number(digits: 3), user_id:User.all.sample.id})}
 
-13.times {Hpost.create({
+ 23.times {Hpost.create({
   title:Faker::Lorem.sentence(word_count: 4), 
-  h_request:Faker::Lorem.paragraph(sentence_count: 3),
+ h_request:Faker::Lorem.paragraph(sentence_count: 3),
   user_id:User.all.sample.id})}
 
 
