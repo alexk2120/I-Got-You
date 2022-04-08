@@ -29,7 +29,7 @@ useEffect(() => {
    
   }, []);
    
-      console.log(users)
+      // console.log(users)
 
   // Creates a User Help Request/Grat
   const postUser = (user) => {
@@ -73,7 +73,7 @@ useEffect(() => {
         setGrat([newGrat, ...grat]);
       });
   };
-
+// console.log('gd',gratData)
   //  /patch likes
 
   const patchGrat = (grat) => {
@@ -85,16 +85,18 @@ useEffect(() => {
       body: JSON.stringify({ ...grat, likes: grat.likes }),
     })
       .then((r) => r.json())
-      .then((data) => {
-        console.log(data);
+      .then((likes) => {
+        console.log(likes);
         // setGrat(
-        //   grat.map(() => {
-        //     if (grat.id === data.id) {
+        //   grat.map((p) => {
+        //     if (gratD.id === data.id) {
         //       return data;
-        //     } 
-           })
+        //     } else {
+        //       return p;
+        //     }
+        //   })
         // );
-      // });
+      });
   };
     return (
     <div>
