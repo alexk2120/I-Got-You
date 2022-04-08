@@ -16,19 +16,20 @@ export default function MainContent() {
     fetch("/users")
    .then((r) => r.json())
    .then((users) =>  setUsers(users)); 
-      
-  // fetch("/hposts")
-  // .then((r) => r.json())
-  // .then((help) => console.log('hposts',help),  setHelp(help));
-
-
-  // fetch("/gposts")
-  //  .then((r) => r.json())
-  // .then((gratData) => console.log("gratposts", gratData) , setGratData(gratData)
+  }, []);
+useEffect(() => {
+   fetch("/hposts")
+  .then((r) => r.json())
+  .then((help) => setHelp(help));
+}, []);
+useEffect(() => {
+  fetch("/gposts")
+   .then((r) => r.json())
+  .then((gratData) => setGratData(gratData));
    
   }, []);
    
-      
+      console.log(users)
 
   // Creates a User Help Request/Grat
   const postUser = (user) => {
@@ -39,7 +40,7 @@ export default function MainContent() {
       },
       body: JSON.stringify(user),
     })
-      .then((res) => res.json())
+      .then((r) => r.json())
       .then((newUser) => {
         setUsers([newUser, ...users]);
       });
@@ -54,8 +55,8 @@ export default function MainContent() {
       body: JSON.stringify(helpD),
     })
       .then((res) => res.json())
-      .then((newhelp) => {
-        setHelp([newhelp, ...help]);
+      .then((newHelp) => {
+        setHelp([newHelp, ...help]);
       });
   };
 
@@ -75,27 +76,25 @@ export default function MainContent() {
 
   //  /patch likes
 
-  const patchGrat = (gratD) => {
-    fetch(`/gposts/${gratD.id}`, {
+  const patchGrat = (grat) => {
+    fetch(`/gposts/${grat.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ...gratD, likes: gratD.likes }),
+      body: JSON.stringify({ ...grat, likes: grat.likes }),
     })
-      .then((res) => res.json())
+      .then((r) => r.json())
       .then((data) => {
         console.log(data);
-        setGrat(
-          gratD.map((p) => {
-            if (gratD.id === data.id) {
-              return data;
-            } else {
-              return p;
-            }
-          })
-        );
-      });
+        // setGrat(
+        //   grat.map(() => {
+        //     if (grat.id === data.id) {
+        //       return data;
+        //     } 
+           })
+        // );
+      // });
   };
     return (
     <div>

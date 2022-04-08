@@ -102,7 +102,7 @@ export default function HelpForm({ postUser, postHelp }) {
               value={formData.city}
             >
               <option>Choose...</option>
-              <option>New York City</option>
+              <option>District of Columbia</option>
               <option>Laguna Beach</option>
               <option>Miami</option>
             </Form.Select>
