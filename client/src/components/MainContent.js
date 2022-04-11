@@ -85,8 +85,8 @@ useEffect(() => {
       body: JSON.stringify({ ...grat, likes: grat.likes }),
     })
       .then((r) => r.json())
-      .then((likes) => {
-        console.log(likes);
+      .then((gLikes) => {
+        setGrat([...gratData.filter((g) => g.id !== grat.id), gLikes]);
         // setGrat(
         //   grat.map((p) => {
         //     if (gratD.id === data.id) {
